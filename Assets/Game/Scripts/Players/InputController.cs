@@ -35,18 +35,24 @@ public class InputController : MonoBehaviour
     }
     #endregion
 
-    [Header("Player Settings")]
-    public bool mouseMovement;
+    public bool hideCursor;
 
     CameraController cameraController;
     PlayerController playerController;
     PlayerAnimator playerAnimator;
+    PlayerWeapon playerWeapon;
 
     private void Start()
     {
         cameraController = GetComponentInChildren<CameraController>();
         playerController = GetComponent<PlayerController>();
         playerAnimator = GetComponent<PlayerAnimator>();
+        playerWeapon = GetComponent<PlayerWeapon>();
+
+        if(hideCursor)
+        {
+            Cursor.visible = false;
+        }
     }
 
     private void Update()
@@ -58,5 +64,8 @@ public class InputController : MonoBehaviour
             playerController.FullSpeed();
         else if (controls.Move.Y < 0)
             playerController.ResetSpeed();
+
+        if (controls.Fire)
+            playerWeapon.Fire();
     }
 }

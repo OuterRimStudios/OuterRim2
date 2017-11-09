@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4959,6 +4959,7 @@ GameObject:
   - component: {fileID: 762425349}
   - component: {fileID: 762425348}
   - component: {fileID: 762425351}
+  - component: {fileID: 762425352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4978,6 +4979,9 @@ Transform:
   m_Children:
   - {fileID: 1346447857}
   - {fileID: 1173174314}
+  - {fileID: 1339469521}
+  - {fileID: 1153689057}
+  - {fileID: 1546317248}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5025,7 +5029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ff9515ca335424aa2047a8d46515a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseMovement: 1
+  hideCursor: 0
 --- !u!114 &762425351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5039,6 +5043,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpAngle: 15
   lerpSpeed: 0.1
+--- !u!114 &762425352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 762425346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bede176475768f3498c567d6d4b4e624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun1: {fileID: 1339469520}
+  gun2: {fileID: 1153689056}
+  aimPosition: {fileID: 1546317248}
+  laser: {fileID: 1495420106497160, guid: 325336b8167929144aa8f2d24160532d, type: 2}
+  fireFrequency: 0.05
+  speed: 0
 --- !u!1 &770879527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8507,6 +8528,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1151835672}
   m_Mesh: {fileID: 4300000, guid: 29bf2bc3ec86585429cffe8b2d413298, type: 3}
+--- !u!1 &1153689056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1153689057}
+  m_Layer: 0
+  m_Name: LeftGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153689057
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1153689056}
+  m_LocalRotation: {x: 0, y: 0.01745245, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: -1, y: 0, z: 1}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
+  m_Children: []
+  m_Father: {fileID: 762425347}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 2, z: 0}
 --- !u!1 &1167228654
 GameObject:
   m_ObjectHideFlags: 0
@@ -9568,6 +9617,34 @@ Transform:
   m_Father: {fileID: 1728313731}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1339469520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1339469521}
+  m_Layer: 0
+  m_Name: RightGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339469521
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339469520}
+  m_LocalRotation: {x: 0, y: -0.01745245, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: 1, y: 0, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children: []
+  m_Father: {fileID: 762425347}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -2, z: 0}
 --- !u!1001 &1346447856
 Prefab:
   m_ObjectHideFlags: 0
@@ -11203,6 +11280,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545766331}
   m_Mesh: {fileID: 4300000, guid: 29bf2bc3ec86585429cffe8b2d413298, type: 3}
+--- !u!1 &1546317247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1546317248}
+  m_Layer: 0
+  m_Name: AimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1546317248
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546317247}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 0, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 762425347}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563965467
 GameObject:
   m_ObjectHideFlags: 0
