@@ -67,5 +67,7 @@ public class InputController : MonoBehaviour
 
         if (controls.Fire)
             playerWeapon.Fire();
+        
+            playerController.Dodge(controls.Move.X);
     }
 }
