@@ -41,6 +41,7 @@ public class InputController : MonoBehaviour
     PlayerController playerController;
     PlayerAnimator playerAnimator;
     PlayerWeapon playerWeapon;
+	WeaponCoolDown weaponCoolDown;
 
     private void Start()
     {
@@ -48,6 +49,7 @@ public class InputController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerAnimator = GetComponent<PlayerAnimator>();
         playerWeapon = GetComponent<PlayerWeapon>();
+		weaponCoolDown = GetComponent<WeaponCoolDown> ();
 
         if(hideCursor)
         {
@@ -65,8 +67,11 @@ public class InputController : MonoBehaviour
         else if (controls.Move.Y < 0)
             playerController.ResetSpeed();
 
-        if (controls.Fire)
-            playerWeapon.Fire();
+		if (controls.Fire)
+		{
+			weaponCoolDown.Fire ();
+            //playerWeapon.Fire();
+		}
         
             playerController.Dodge(controls.Move.X);
     }
