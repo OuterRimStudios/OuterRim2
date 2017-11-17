@@ -5076,6 +5076,7 @@ MonoBehaviour:
   weaponHolder:
   - {fileID: 1339469520}
   - {fileID: 1153689056}
+  weaponSources: []
 --- !u!1 &770879527
 GameObject:
   m_ObjectHideFlags: 0
