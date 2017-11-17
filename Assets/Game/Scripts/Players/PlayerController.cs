@@ -40,11 +40,6 @@ public class PlayerController : MonoBehaviour
         Clamp();
     }
 
-    public void Dodge(float horizontal)
-    {
-        transform.Rotate(horizontal * 50 * Time.deltaTime, 0, 0);
-    }
-
     void Clamp()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -clampValue, clampValue), 

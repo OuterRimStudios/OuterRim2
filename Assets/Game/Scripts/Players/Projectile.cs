@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
 	void Update ()
     {
-        transform.LookAt(target);
+        //transform.LookAt(target);
         rb.velocity = transform.forward * projectileSpeed;
     }
 }

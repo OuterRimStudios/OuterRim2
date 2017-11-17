@@ -58,7 +58,11 @@ public class InputController : MonoBehaviour
     private void Update()
     {
         playerController.Move();
-        playerAnimator.AnimateMovement();
+
+        if (controls.Move.X > 0 || controls.Move.X < 0)
+            playerAnimator.AnimateMovement(controls.Move.X, true);
+        else
+            playerAnimator.AnimateMovement(controls.Move.X, false);
 
         if (controls.Move.Y > 0)
             playerController.FullSpeed();
@@ -67,7 +71,5 @@ public class InputController : MonoBehaviour
 
         if (controls.Fire)
             playerWeapon.Fire();
-        
-            playerController.Dodge(controls.Move.X);
     }
 }
