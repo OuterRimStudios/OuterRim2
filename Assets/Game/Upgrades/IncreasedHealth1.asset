@@ -9,19 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c9fb097f7b3f404ea25d865ca4b50a9, type: 3}
-  m_Name: IncreasedSpeed1
+  m_Name: IncreasedHealth1
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 0}
-  bForwardSpeed: 1
-  forwardSpeedPercent: 20
-  bMaxHealth: 0
-  maxHealthPercent: 0
+  bForwardSpeed: 0
+  forwardSpeedPercent: 0
+  bMaxHealth: 1
+  maxHealthPercent: 20
   bMaxComponents: 0
   componentCount: 0
   bMaxLives: 0
   lifeCount: 0
-  bTurningSpeed: 1
-  turningSpeedPercent: 20
+  bTurningSpeed: 0
+  turningSpeedPercent: 0
   bWeaponDamage: 0
   weaponDamagePercent: 0
   bAbilityCooldowns: 0
