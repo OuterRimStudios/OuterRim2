@@ -13,7 +13,6 @@ public class PlayerWeapon : MonoBehaviour
     public float fireFrequency;
 
     bool isFiring;
-    public float speed;
 
     public void Fire()
     {

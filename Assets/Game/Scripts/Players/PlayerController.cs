@@ -7,36 +7,47 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Variables")]
     public float baseSpeed;
     public float fullSpeed;
+
+    public float superSpeed;
+
     public float speedIncreaseAmount;
     public float speedDecreaseAmount;
     public float speedChangeFrequency;
+
+    public Vector3 superSpeedCameraOffset;
     public float FoVLerp;
+
+    public float barrelRollSpeed;
+    float rollSpeed;
 
     [Space, Header("")]
     public int clampValue;
+
+    public GameObject playerModel;
 
     float speed;
     Vector3 movement;
     Rigidbody rigidBody;
     Camera myCamera;
+    CameraController cameraController;
 
     bool changingSpeed;
 
+    Vector3 cameraOriginalOffset;
 
     private void Awake()
     {
         myCamera = GetComponentInChildren<Camera>();
-    }
+        cameraController = myCamera.GetComponent<CameraController>();
+       // cameraOriginalOffset = cameraController.cameraOffset;
 
-    private void Start()
-    {
         rigidBody = GetComponent<Rigidbody>();
         ResetSpeed();
     }
 
-    public void Move()
+    public void Move(float horizontal)
     {
-        rigidBody.velocity = transform.forward * speed * Time.deltaTime;
+        rigidBody.velocity = playerModel.transform.forward * speed * Time.deltaTime;
         Clamp();
     }
 
@@ -46,7 +57,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(transform.position.y, -clampValue, clampValue), transform.position.z);
     }
 
-    public void FullSpeed()
+    public void FullSpeed() 
     {
         if(!changingSpeed)
         {
@@ -89,5 +100,16 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(speedChangeFrequency);
         changingSpeed = false;
+    }
+
+    public void SuperSpeed()
+    {
+        speed = superSpeed;
+
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, 40, FoVLerp * Time.deltaTime);
+        cameraController.cameraOffset = superSpeedCameraOffset;
+
+        if (myCamera.fieldOfView > 40)
+            myCamera.fieldOfView = 90;
     }
 }

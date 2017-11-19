@@ -42,7 +42,7 @@ public class InputController : MonoBehaviour
     PlayerAnimator playerAnimator;
     PlayerWeapon playerWeapon;
 
-    private void Start()
+    private void Awake()
     {
         cameraController = GetComponentInChildren<CameraController>();
         playerController = GetComponent<PlayerController>();
@@ -57,19 +57,27 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        playerController.Move();
 
-        if (controls.Move.X > 0 || controls.Move.X < 0)
-            playerAnimator.AnimateMovement(controls.Move.X, true);
-        else
-            playerAnimator.AnimateMovement(controls.Move.X, false);
+        //cameraController.UpdateCameraPosition(controls.Look.X, controls.Look.Y);
+        playerController.Move(controls.Move.X);
+        
 
-        if (controls.Move.Y > 0)
+        playerAnimator.AnimateMovement(Input.mousePosition.x / 100, Input.mousePosition.y / 100, true);
+
+
+        if (controls.Sprint)
+            playerController.SuperSpeed();
+        else if (controls.Move.Y > 0)
             playerController.FullSpeed();
         else if (controls.Move.Y < 0)
             playerController.ResetSpeed();
 
         if (controls.Fire)
             playerWeapon.Fire();
+
+        if (controls.Aim)
+            cameraController.SetAimCameraPosition();
+        else
+            cameraController.SetNormalCameraPosition();
     }
 }
